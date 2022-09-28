@@ -1,0 +1,17 @@
+#body, .bg-lemon{
+    background-color: lemonchiffon	;
+}
+
+.container-fluid{
+    background-color: inherit;
+}
+
+.card{
+    width: 100vw;
+}
+
+@media (min-width: 576px){
+    .card{
+        width: 15rem;
+    }
+}

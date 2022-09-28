@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=100, initial-scale=1.0">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4594/4594681.png">
+    <script type="module" src="./cryptofarm.js"></script>
+    <title>CryptoFarm</title>
+</head>
+<body id="body">
+
+<!---- NAVBAR ------------------------------------------------------------------------------------->
+
+      <nav class="navbar navbar-expand-lg bg-light border border-warning">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/4594/4594681.png" alt="cryptofarm logo" width="30" height="24" class="d-inline-block align-text-top">
+                CryptoFarm
+                </a>
+          <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" id="goToCoins" href="#">coins</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="goToReport" href="#">report</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="goToAbout" href="#">about</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="goToSettings" href="#">settings</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search">
+              <!-- <button class="btn btn-outline-primary" type="button">Search</button> -->
+            </form>
+          </div>
+        </div>
+      </nav>
+
+<!---- DEV TOOLS ------------------------------------------------------------------>
+
+<div id="DEVTOOLS" class="m-1 border border-warning rounded-pill">
+  <p class="m-3" style="display: inline">Le dev tools:</p>
+  <button class="btn btn-danger m-1" id="clearStorage">clear storage</button>
+  <button class="btn btn-warning m-1" id="printStorage">print storage</button>
+  <button class="btn btn-success m-1" id="modal-btn">manual popup</button>
+  <button class="btn btn-primary" id="manual">make card</button>
+  <button class="btn btn-dark" id="updateSwitches">update switches</button>
+</div>
+
+<!---- CARDS/COINS ---------------------------------------------------------------->
+
+    <div id='CARDS' class="row" style="z-index: 1;">
+
+      <!-- card examle/template/test -->
+      
+      <!-- <div class="card col-1 m-1 position-relative">
+        <div class="card-body" style="width: 75%;">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#example" aria-expanded="false" aria-controls="example">more info</button>
+        </div>
+        <div class="form-check form-switch position-absolute" 
+            style="right:10%; top:42%; transform:scale(1.5);">
+          <input class="form-check-input" type="checkbox">
+        </div>
+        <div class="collapse position-absolute" id="example" style="top: 100%; z-index: 1;">
+          <div class="card card-body">
+            test
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+
+    <!-- modal virtual button -->
+    <button id="callModal" type="button" class="hidden btn btn-primary" 
+    data-bs-toggle="modal" data-bs-target="#modalID">
+      Launch modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalID" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                  <button type="button" class="btn-close modalClose" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body text-center">
+                <p class="h4 p-2">oops! <br> looks like you have too many eggs in your basket...</p>
+                <img style="width: 30%;padding:1em;" src="https://cdn-icons-png.flaticon.com/512/2713/2713474.png" alt="too many crypto coins selected (>5)">
+                <div class="alert alert-danger" role="alert">
+                  <img style="width: 6%;" src="https://cdn-icons-png.flaticon.com/512/8417/8417929.png" alt="alert icon">
+                  you can only check up to 5 crypto coins for your report! </b>
+                  remove some coins from your report to make room for more
+                </div>
+                <p></p>
+              </div>
+              <div id="modalCards" class="row justify-content-center" style="width: 30rem;">
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary modalClose" data-bs-dismiss="modal" id="bob">Close</button>
+                  <button type="button" class="btn btn-primary modalClose" id="modalAddCoin">add coin</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+<!---- REPORT ------------------------------------------------------------------->
+
+<div id="REPORT">
+
+</div>
+
+<!---- ABOUT ------------------------------------------------------------------->
+
+<div id="ABOUT">
+  <div class="text-center m-5">
+    <p>CryptoFarm is a platform for viewing and tracking crypto currencies</p>
+    <p>website created and designed by Tomer Vaknin</p>
+    <img class="rounded-circle" style="width: 10%;" src="https://scontent.ftlv6-1.fna.fbcdn.net/v/t39.30808-6/245477408_4521128144681774_6047610464550797684_n.jpg?stp=dst-jpg_s526x395&_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=h-gid8HTuLoAX-a8N1o&_nc_ht=scontent.ftlv6-1.fna&oh=00_AT-dlZDwTugDz5-gHMLaI4bapNh8mwPGhZwdnX77qHjfMw&oe=632A0F3A" alt="website-creator-img">
+    <p class='mt-5'><a href="https://github.com/Hyaku10">My Github</a></p>
+  </div>
+</div>
+
+<!---- SETTINGS ------------------------------------------------------------------->
+
+<div id="SETTINGS">
+  <form class="text-center" id="currencies-here">
+    <div id="DEVTOG" class="m-4" style="display: inline-block;">
+      <input id="DT-input" type="checkbox" class="btn-check btn-sm" autocomplete="off">
+      <label id="DT-label" class="btn btn-primary" for="btn-check">show dev tools</label>
+    </div>
+    <p>Currencies:</p>
+    <p class="text-muted small">choose currencies for your report</p>
+    <div class="form-check text-center">
+      <label class="form-check-label" for="flexCheckDefault">
+        <input class="currency-box form-check-input" type="checkbox" value="" id="usd">
+        USD
+      </label>
+      <img style="width: 2rem;" src="https://cdn-icons-png.flaticon.com/128/197/197484.png" alt="currency icon">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="flexCheckDefault">
+        <input class="currency-box form-check-input" type="checkbox" value="" id="eur">
+        EUR
+      </label>
+      <img style="width: 2rem;" src="https://cdn-icons-png.flaticon.com/128/197/197615.png" alt="currency icon">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="flexCheckDefault">
+        <input class="currency-box form-check-input" type="checkbox" value="" id="ils">
+        ILS
+      </label>
+      <img style="width: 2rem;" src="https://cdn-icons-png.flaticon.com/512/197/197577.png" alt="currency icon">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="flexCheckDefault">
+        <input class="currency-box form-check-input" type="checkbox" value="" id="aud">
+        AUD
+      </label>
+      <img style="width: 2rem;" src="https://cdn-icons-png.flaticon.com/128/197/197507.png" alt="currency icon">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="flexCheckDefault">
+        <input class="currency-box form-check-input" type="checkbox" value="" id="cad">
+        CAD
+      </label>
+      <img style="width: 2rem;" src="https://cdn-icons-png.flaticon.com/128/197/197430.png" alt="currency icon">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="flexCheckDefault">
+        <input class="currency-box form-check-input" type="checkbox" value="" id="gbp">
+        GBP
+      </label>
+      <img style="width: 2rem;" src="https://cdn-icons-png.flaticon.com/128/197/197374.png" alt="currency icon">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="flexCheckDefault">
+        <input class="currency-box form-check-input" type="checkbox" value="" id="jpy">
+        JPY
+      </label>
+      <img style="width: 2rem;" src="https://cdn-icons-png.flaticon.com/128/197/197604.png" alt="currency icon">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="flexCheckDefault">
+        <input class="currency-box form-check-input" type="checkbox" value="" id="hkd">
+        HKD
+      </label>
+      <img style="width: 2rem;" src="https://cdn-icons-png.flaticon.com/128/197/197570.png" alt="currency icon">
+    </div>
+    <p class="mt-5"> More Currencies:</p>
+  </form>
+</div>
+
+<!---- LINKS/MODULES -------------------------------------------------------------------->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="cryptofarm.css">
+</body>
+</html>
